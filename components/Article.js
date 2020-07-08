@@ -99,6 +99,8 @@ const data = [
     <span class='expandButton'>+</span>
   </div>
 
+  
+
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as its one argument, or 5 separate strings mapping to each property of an article object.
