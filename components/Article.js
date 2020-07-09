@@ -85,7 +85,23 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  }, 
+  {
+    title: 'André Jeon',
+    date: 'July 8th, 2020',
+    firstParagraph: `André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon 
+          André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon 
+          André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon`,
+
+    secondParagraph: `André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon 
+          André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon 
+          André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon`,
+
+    thirdParagraph: `André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon 
+          André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon 
+          André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon André Jeon`,
   }
+
 ];
 
 /* Step 1: Write a component called 'articleMaker' to create an article. You want your component to return markup like the template below: 
@@ -99,6 +115,7 @@ const data = [
     <span class='expandButton'>+</span>
   </div>
 
+
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as its one argument, or 5 separate strings mapping to each property of an article object.
@@ -111,3 +128,46 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+
+function articleMaker(object) {
+
+  const articleItself = document.createElement('div')
+  const titleOfArticle = document.createElement('h2')
+  const dateOfArticle = document.createElement('p')
+  const expandButton = document.createElement('span')
+  const firstPara = document.createElement('p')
+  const secondPara = document.createElement('p')
+  const thirdPara = document.createElement('p')
+
+  expandButton.classList.add('expandButton')
+
+  articleItself.classList.add('article')
+  dateOfArticle.classList.add('date')
+
+  titleOfArticle.textContent = object.title
+  firstPara.textContent = object.firstParagraph
+  secondPara.textContent = object.secondParagraph
+  thirdPara.textContent = object.thirdParagraph
+  dateOfArticle.textContent = object.date
+  expandButton.textContent = '+'
+  expandButton.addEventListener('click', () => {
+    articleItself.classList.toggle('article-open')
+  })
+
+  articleItself.appendChild(titleOfArticle)
+  articleItself.appendChild(dateOfArticle)
+  articleItself.appendChild(firstPara)
+  articleItself.appendChild(secondPara)
+  articleItself.appendChild(thirdPara)
+  articleItself.appendChild(expandButton)
+
+  return articleItself
+}
+
+const container = document.querySelector('.articles')
+
+// console.log(articleMaker())
+
+data.forEach(item => {
+  container.appendChild(articleMaker(item))
+})
