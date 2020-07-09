@@ -33,5 +33,19 @@ let menuItems = [
 */
 
 function menuMaker(object) {
-  
+
+  const menu = document.createElement('div')
+  const unorderedList = document.createElement('ul')
+
+  menu.appendChild(unorderedList)
+
+  const menuButton = document.querySelector('.menu-button')
+
+  menuButton.addEventListener('click', () => {
+    menuButton.classList.toggle('menu-open')
+  })
+
+  console.log(men)
+
+
 }
